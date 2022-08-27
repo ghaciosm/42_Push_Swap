@@ -1,19 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_rx.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 15:14:28 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/27 18:24:17 by ghaciosm         ###   ########.fr       */
+/*   Created: 2022/08/27 18:16:02 by ghaciosm          #+#    #+#             */
+/*   Updated: 2022/08/27 18:16:22 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(void)
+void	ft_ra(t_stack **a)
 {
-	write(1, "Error\n", 6);
-	exit (0);
+	t_stack	*first;
+	t_stack	*last;
+
+	first = *a;
+	last = *a;
+	while (last -> next)
+		last = last->next;
+	last->next = first;
+	*a = (*a)->next;
+	first->next = NULL;
+	write(1, "ra\n", 3);
+}
+
+void	ft_rb(t_stack **b)
+{
+	t_stack	*first;
+	t_stack	*last;
+
+	first = *b;
+	last = *b;
+	while (last -> next)
+		last = last->next;
+	last->next = first;
+	*b = (*b)->next;
+	first->next = NULL;
+	write(1, "rb\n", 3);
 }

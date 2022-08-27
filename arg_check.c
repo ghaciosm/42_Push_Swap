@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arg_check.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/27 18:13:53 by ghaciosm          #+#    #+#             */
+/*   Updated: 2022/08/27 18:13:55 by ghaciosm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	*ft_intjoin(int *a, t_data *data, int i)
@@ -88,7 +100,8 @@ int	arg_check(char **av, t_stack **a, t_data *data)
 		j = 0;
 		while (av[i][j])
 		{
-			if (!(ft_isdigit(av[i][j]) || ((av[i][j] == '-' || av[i][j] == '+') && ft_isdigit(av[i][j + 1]))))
+			if (!(ft_isdigit(av[i][j]) || ((av[i][j] == '-'
+					|| av[i][j] == '+') && ft_isdigit(av[i][j + 1]))))
 			{
 				write(1, "Error\n", 6);
 				exit (0);
