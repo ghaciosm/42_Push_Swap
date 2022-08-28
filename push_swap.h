@@ -50,5 +50,6 @@ void	ft_ra(t_stack **a);
 void	ft_rb(t_stack **b);
 void	ft_sa(t_stack **a);
 void	ft_sb(t_stack **b);
+int		is_sorted(t_stack *a);
 
 #endif
