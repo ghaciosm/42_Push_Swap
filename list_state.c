@@ -63,7 +63,6 @@ void	array_sort(int **s, int cnt)
 	int	tmp;
 
 	i = 0;
-	j = 1;
 	while (i < cnt)
 	{
 		j = i + 1;

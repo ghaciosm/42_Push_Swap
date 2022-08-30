@@ -6,38 +6,11 @@
 /*   By: ghaciosm <ghaciosm@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 15:21:08 by ghaciosm          #+#    #+#             */
-/*   Updated: 2022/08/28 12:02:33 by ghaciosm         ###   ########.fr       */
+/*   Updated: 2022/08/28 12:32:47 by ghaciosm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	algorithm_3(t_stack **a)
-{
-	if (is_sorted(*a))
-		return ;
-	if (((*a)->index > ((*a)->next->index && (*a)->next->next->index))
-		&& ((*a)->next->index > (*a)->next->next->index))
-	{
-		ft_ra(a);
-		ft_sa(a);
-	}
-	else if (((*a)->index < ((*a)->next->index && (*a)->next->next->index))
-		&& ((*a)->next->index > (*a)->next->next->index))
-	{
-		ft_sa(a);
-		ft_ra(a);
-	}
-	else if (((*a)->index < (*a)->next->index)
-		&& ((*a)->index > (*a)->next->next->index))
-		ft_rra(a);
-	else if (((*a)->index > (*a)->next->next->index)
-		&& ((*a)->next->index < (*a)->next->next->index))
-		ft_ra(a);
-	else if (((*a)->index > (*a)->next->index)
-		&& ((*a)->index < (*a)->next->next->index))
-		ft_sa(a);
-}
 
 int	is_sorted(t_stack *a)
 {
@@ -81,7 +54,9 @@ void	begin(t_stack **a, t_stack **b, t_data *data)
 		return ;
 	if (data->a_cnt == 3)
 		algorithm_3(a);
-	if (data->a_cnt > 1)
+	else if (data->a_cnt == 5)
+		algorithm_5(a, b, data);
+	else
 		begin_radix(a, b, data);
 }
 
@@ -97,7 +72,7 @@ int	main(int ac, char **av)
 	data->count = 0;
 	if (ac >= 2)
 	{
-		arg_check(av, &a, data);
+		split(av, &a, data);
 		data->a_cnt = data->count;
 		data->b_cnt = 0;
 		array_sort(&data->s, data->count);

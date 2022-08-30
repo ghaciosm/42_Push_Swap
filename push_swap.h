@@ -39,7 +39,7 @@ void	array_sort(int **s, int cnt);
 void	ft_error(void);
 int		*ft_intjoin(int *a, t_data *data, int i);
 int		nb_chk(t_data *data);
-int		ft_atoi2(char *av, t_data *data);
+int		ft_atoi2(char *av);
 int		arg_check(char **av, t_stack **a, t_data *data);
 void	stack_indexle(t_stack **a, t_data *data);
 void	ft_pa(t_stack **a, t_stack **b, t_data *data);
@@ -51,5 +51,8 @@ void	ft_rb(t_stack **b);
 void	ft_sa(t_stack **a);
 void	ft_sb(t_stack **b);
 int		is_sorted(t_stack *a);
+void	algorithm_5(t_stack **a, t_stack **b, t_data *data);
+void	algorithm_3(t_stack **a);
+void	split(char **av, t_stack **a, t_data *data);
 
 #endif

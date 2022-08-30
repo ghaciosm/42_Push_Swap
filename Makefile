@@ -2,7 +2,7 @@ NAME = libft.a
 LIBFT = libft
 
 all: $(NAME)
-	gcc *.c $(NAME) -o push_swap
+	gcc -Wall -Werror -Wextra *.c  $(NAME) -o push_swap
 
 $(NAME): $(LIBFT)
 	make -C $(LIBFT)

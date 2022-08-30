@@ -60,12 +60,11 @@ int	nb_chk(t_data *data)
 	return (1);
 }
 
-int	ft_atoi2(char	*av, t_data *data)
+int	ft_atoi2(char	*av)
 {
 	int		i;
 	int		j;
 	long	tmp;
-	int		a;
 
 	i = 0;
 	j = 1;
@@ -88,13 +87,28 @@ int	ft_atoi2(char	*av, t_data *data)
 	return (tmp * j);
 }	
 
+void	split(char **av, t_stack **a, t_data *data)
+{
+	int		i;
+	char	**s;
+
+	i = 1;
+	while (av[i])
+	{
+		s = ft_split(av[i], ' ');
+		arg_check(s, a, data);
+		free(s);
+		i++;
+	}
+}
+
 int	arg_check(char **av, t_stack **a, t_data *data)
 {
 	int		i;
 	int		j;
 	t_stack	*new;
 
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
 		j = 0;
@@ -102,16 +116,14 @@ int	arg_check(char **av, t_stack **a, t_data *data)
 		{
 			if (!(ft_isdigit(av[i][j]) || ((av[i][j] == '-'
 					|| av[i][j] == '+') && ft_isdigit(av[i][j + 1]))))
-			{
-				write(1, "Error\n", 6);
-				exit (0);
-			}
+				ft_error();
 			j++;
 		}
-		data->tmp = ft_atoi2(av[i], data);
+		data->tmp = ft_atoi2(av[i]);
 		nb_chk(data);
 		new = ft_listnew(data->tmp);
 		*a = list_add_back(new, *a);
+		free(av[i]);
 		i++;
 	}
 	return (1);
